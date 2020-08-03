@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "852371480506",
+    "firebase_url": "https://lookfordev-e3e4a.firebaseio.com",
+    "project_id": "lookfordev-e3e4a",
+    "storage_bucket": "lookfordev-e3e4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852371480506:android:fce8fc1d9189c952c28783",
+        "android_client_info": {
+          "package_name": "com.example.lookfordev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852371480506-acrnmaebafh513ur9disa4hsjrekjsa5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_SDJQz_CnGNu9FT15ggBJluW377zllc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852371480506-acrnmaebafh513ur9disa4hsjrekjsa5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
