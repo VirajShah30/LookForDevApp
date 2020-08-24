@@ -9,14 +9,14 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/layout1"
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:background="@drawable/primary_gradient"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
@@ -30,7 +30,6 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/eee"
         app:lottie_url="REPLACE_JSON_URL" />
-
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,6 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
             android:fontFamily="sans-serif-light"
             android:text="login"
             android:textAllCaps="true"
@@ -103,7 +103,7 @@
             android:layout_marginBottom="32dp"
             android:background="@drawable/button_round_corner"
             android:text="LOGIN"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorBackgroundDark"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -116,6 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
             android:text="EMAIL"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,6 +128,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
             android:text="password"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
@@ -136,14 +138,26 @@
 
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/forgotpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:text="Forgot Password?"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <TextView
+        android:id="@+id/Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text=" Register Now!"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
