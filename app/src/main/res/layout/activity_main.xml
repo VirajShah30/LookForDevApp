@@ -7,19 +7,19 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/circle"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center"
-        android:text="LookForDev"
-        android:textAlignment="center"
-        android:textColor="@color/colorBackgroundDark"
-        android:textSize="48sp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView1"
+        android:layout_width="591dp"
+        android:layout_height="1089dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.688"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.703"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/anm"
+        app:lottie_url="REPLACE_JSON_URL" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
