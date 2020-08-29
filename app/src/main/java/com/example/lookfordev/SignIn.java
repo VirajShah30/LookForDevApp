@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class SignIn extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText email,password;
-    TextView forgotpass;
+    TextView forgotpass,register;
     Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class SignIn extends AppCompatActivity {
         email = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword);
         forgotpass = findViewById(R.id.forgotpass);
+        register = findViewById(R.id.Register);
         login = findViewById(R.id.button);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +92,17 @@ public class SignIn extends AppCompatActivity {
                 }
             }
         });
-
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignIn.this, RegisterUserData.class);
+                startActivity(intent);
+            }
+        });
+    }
+    public void onBackPressed() {
+        // super.onBackPressed(); commented this line in order to disable back press
+        //Write your code here
+        //Toast.makeText(getApplicationContext(), "Back press disabled!", Toast.LENGTH_SHORT).show();
     }
 }
