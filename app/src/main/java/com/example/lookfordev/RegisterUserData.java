@@ -29,6 +29,8 @@ public class RegisterUserData extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(RegisterUserData.this, "Pressed", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RegisterUserData.this, RegisterDevData.class);
+                startActivity(intent);
             }
         });
     }
