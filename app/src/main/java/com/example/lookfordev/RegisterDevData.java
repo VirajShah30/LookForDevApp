@@ -14,7 +14,7 @@ public class RegisterDevData extends AppCompatActivity {
         setContentView(R.layout.activity_register_dev_data);
 
         Spinner dropdown = findViewById(R.id.spinner1);
-        String[] items = new String[]{"Empty", "Web Developer", "App Developer", "Hybrid Developer", "UI/UX Developer", "Backend Developer"};
+        String[] items = new String[]{"Web Developer", "App Developer", "Hybrid Developer", "UI/UX Developer", "Backend Developer"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 

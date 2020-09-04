@@ -38,6 +38,7 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String mail,pass;
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                 mail = email.getText().toString();
                 pass = password.getText().toString();
                 if (TextUtils.isEmpty(mail)) {
@@ -47,6 +48,9 @@ public class SignIn extends AppCompatActivity {
                 else if (TextUtils.isEmpty(pass)) {
                     //Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
                     password.setError( "Password is required!" );
+                }
+                else if (!(mail.trim().matches(emailPattern))) {
+                    email.setError("Enter valid Email address");
                 }
                 else
                 {

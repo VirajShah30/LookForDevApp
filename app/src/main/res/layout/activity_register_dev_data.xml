@@ -47,7 +47,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/layout1">
+        app:layout_constraintTop_toTopOf="@+id/layout1"
+        app:layout_constraintVertical_bias="0.32999998">
 
 
         <TextView
@@ -86,7 +87,7 @@
             android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
             android:fontFamily="sans-serif-light"
-            android:text="Developer"
+            android:text="REGISTER"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
             android:textSize="30sp"
@@ -118,7 +119,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -127,23 +128,20 @@
 
         <Spinner
             android:id="@+id/spinner1"
-            style="@android:style/Widget.Spinner.DropDown"
+            style="@style/mySpinnerItemStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@android:drawable/btn_dropdown"
-            android:backgroundTint="@android:color/tertiary_text_light"
-            android:popupBackground="@drawable/primary_gradient"
+            android:background="@android:color/transparent"
+            android:dropDownWidth="match_parent"
+            android:popupBackground="@color/colorBackgroundDark"
             android:scrollbarStyle="insideInset"
-            android:scrollbarThumbHorizontal="@color/colorPrimary"
-            android:scrollbarThumbVertical="@color/colorPrimary"
             android:soundEffectsEnabled="false"
             android:spinnerMode="dropdown"
             android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -167,18 +165,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="32dp"
             android:background="@drawable/button_round_corner"
-            android:text="COntinue"
+            android:text="Register"
             android:textColor="@color/colorBackgroundDark"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+            app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
         <TextView
             android:id="@+id/textView5"
@@ -187,7 +185,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
-            android:text="Developer EMAIL"
+            android:text="WORK EMAIL"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Username" />
@@ -197,9 +195,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:background="@android:color/transparent"
-            android:text="Developer Name"
+            android:text="Name"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
@@ -212,47 +210,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
-            android:text="Experience"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" /><![CDATA[
-
-
-
-
-
-            android:layout_height=
-            android:layout_marginStart=16dp"
-            android:layout_marginTop="16dp"
-            android:background="@android:color/transparent"
-            android:text=""
+            android:text="Experience in years"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-
-
-
-
-
-    ]]>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:text="Already Have An Account? "
-        android:textColor="@color/colorBackgroundDark"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
