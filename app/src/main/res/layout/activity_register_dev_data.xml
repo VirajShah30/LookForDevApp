@@ -112,7 +112,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/experience"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -197,7 +197,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:background="@android:color/transparent"
-            android:text="Name"
+            android:text="Full Name"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"

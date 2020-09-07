@@ -30,7 +30,7 @@ public class SignIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.editTextTextEmailAddress);
-        password = findViewById(R.id.editTextTextPassword);
+        password = findViewById(R.id.password);
         forgotpass = findViewById(R.id.forgotpass);
         register = findViewById(R.id.Register);
         login = findViewById(R.id.button);
