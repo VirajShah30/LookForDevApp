@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/developer_nav_graph"
+    app:startDestination="@id/developerViewGig">
+
+    <fragment
+        android:id="@+id/developerSortGig"
+        android:name="com.example.lookfordev.DeveloperSortGig"
+        android:label="fragment_developer_sort_gig"
+        tools:layout="@layout/fragment_developer_sort_gig" />
+    <fragment
+        android:id="@+id/developerViewGig"
+        android:name="com.example.lookfordev.DeveloperViewGig"
+        android:label="fragment_developer_view_gig"
+        tools:layout="@layout/fragment_developer_view_gig" />
+    <fragment
+        android:id="@+id/developerProfile"
+        android:name="com.example.lookfordev.DeveloperProfile"
+        android:label="fragment_developer_profile"
+        tools:layout="@layout/fragment_developer_profile" />
+</navigation>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/compnay_nav_graph"
+    app:startDestination="@id/companyViewGig">
+
+    <fragment
+        android:id="@+id/companyAddGig"
+        android:name="com.example.lookfordev.CompanyAddGig"
+        android:label="fragment_company_add_gig"
+        tools:layout="@layout/fragment_company_add_gig" />
+    <fragment
+        android:id="@+id/companyViewGig"
+        android:name="com.example.lookfordev.CompanyViewGig"
+        android:label="fragment_company_view_gig"
+        tools:layout="@layout/fragment_company_view_gig" />
+    <fragment
+        android:id="@+id/companyProfile"
+        android:name="com.example.lookfordev.CompanyProfile"
+        android:label="fragment_company_profile"
+        tools:layout="@layout/fragment_company_profile" />
+</navigation>

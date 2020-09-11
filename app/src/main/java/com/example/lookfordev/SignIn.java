@@ -18,12 +18,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignIn extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText email,password;
     TextView forgotpass,register;
     Button login;
+    FirebaseDatabase rootnode;
+    DatabaseReference userReference;
+    FirebaseUser current;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +42,35 @@ public class SignIn extends AppCompatActivity {
         forgotpass = findViewById(R.id.forgotpass);
         register = findViewById(R.id.Register);
         login = findViewById(R.id.button);
+        mAuth = FirebaseAuth.getInstance();
+        rootnode = FirebaseDatabase.getInstance();
+        userReference = rootnode.getReference("UserDetails");
+
+        // Auto Signin
+        current = mAuth.getCurrentUser();
+        if(current != null) {
+            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+            final String userId = mAuth.getUid();
+            userReference.child(userId).addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            UserHelperClass user = dataSnapshot.getValue(UserHelperClass.class);
+                            if (user.getRole().equals("Developer")) {
+                                Intent intent = new Intent(SignIn.this, DevDashboard.class);
+                                startActivity(intent);
+                            }
+                            else{
+                                Intent intent = new Intent(SignIn.this, CompDashboard.class);
+                                startActivity(intent);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(getApplicationContext(), "Error! Try Again", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,8 +97,26 @@ public class SignIn extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(SignIn.this, DevDashboard.class);
-                                        startActivity(intent);
+                                        final String userId = mAuth.getUid();
+                                        userReference.child(userId).addListenerForSingleValueEvent(
+                                                new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                                        UserHelperClass user = dataSnapshot.getValue(UserHelperClass.class);
+                                                        if (user.getRole().equals("Developer")) {
+                                                            Intent intent = new Intent(SignIn.this, DevDashboard.class);
+                                                            startActivity(intent);
+                                                        }
+                                                        else{
+                                                            Intent intent = new Intent(SignIn.this, CompDashboard.class);
+                                                            startActivity(intent);
+                                                        }
+                                                    }
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError error) {
+                                                        Toast.makeText(getApplicationContext(), "Error! Try Again", Toast.LENGTH_LONG).show();
+                                                    }
+                                                });
                                     }
                                     else {
                                         Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();

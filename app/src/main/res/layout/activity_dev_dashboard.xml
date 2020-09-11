@@ -6,4 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".DevDashboard">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/devBottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10sp"
+        app:itemBackground="@color/colorBackgroundDark"
+        app:itemHorizontalTranslationEnabled="false"
+        app:itemIconSize="28sp"
+        app:itemIconTint="@color/colorPrimary"
+        app:itemTextAppearanceActive="@style/navStyle"
+        app:itemTextAppearanceInactive="@style/navStyle"
+        app:itemTextColor="@color/colorPrimary"
+        app:labelVisibilityMode="selected"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/developer_menu" />
+
+    <fragment
+        android:id="@+id/dev_nav_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/devBottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/developer_nav_graph" />
 </androidx.constraintlayout.widget.ConstraintLayout>

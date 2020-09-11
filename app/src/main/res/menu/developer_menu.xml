@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/developerSortGig"
+        android:icon="@drawable/sort_gig"
+        android:title="Sort Gigs" />
+    <item
+        android:id="@+id/developerViewGig"
+        android:icon="@drawable/view_gig"
+        android:title="View Gigs" />
+    <item
+        android:id="@+id/developerProfile"
+        android:icon="@drawable/profile"
+        android:title="Profile" />
+</menu>

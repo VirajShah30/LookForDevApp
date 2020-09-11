@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/companyAddGig"
+        android:icon="@drawable/add_gig"
+        android:title="Add Gig" />
+    <item
+        android:id="@+id/companyViewGig"
+        android:icon="@drawable/view_gig"
+        android:title="View Gig" />
+    <item
+        android:id="@+id/companyProfile"
+        android:icon="@drawable/profile"
+        android:title="Profile" />
+</menu>
