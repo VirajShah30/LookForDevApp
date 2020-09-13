@@ -23,4 +23,7 @@ public class DevDashboard extends AppCompatActivity {
         onBackPressed();
         return super.onSupportNavigateUp();
     }
+    public void onBackPressed() {
+
+    }
 }
