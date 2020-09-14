@@ -10,11 +10,11 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/compBottomNav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:elevation="10sp"
         app:itemBackground="@color/colorBackgroundDark"
         app:itemHorizontalTranslationEnabled="false"
-        app:itemIconSize="28sp"
+        app:itemIconSize="24sp"
         app:itemIconTint="@color/colorPrimary"
         app:itemTextAppearanceActive="@style/navStyle"
         app:itemTextAppearanceInactive="@style/navStyle"
