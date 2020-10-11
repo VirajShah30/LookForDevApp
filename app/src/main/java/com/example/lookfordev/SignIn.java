@@ -36,7 +36,6 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.password);
         forgotpass = findViewById(R.id.forgotpass);
