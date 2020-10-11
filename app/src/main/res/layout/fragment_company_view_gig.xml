@@ -157,7 +157,7 @@
 
 
                 <Button
-                    android:id="@+id/submit"
+                    android:id="@+id/Remove1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -165,7 +165,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="24dp"
                     android:background="@drawable/button_round_corner"
-                    android:text="submit"
+                    android:text="Remove GiG"
                     android:textAllCaps="true"
                     android:textColor="@color/colorBackgroundDarkest"
                     android:textSize="18sp"
