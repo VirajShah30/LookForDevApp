@@ -118,7 +118,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
             android:id="@+id/workEmail"
@@ -130,6 +130,7 @@
             android:textSize="18sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView16"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView16" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -137,14 +138,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
             android:background="@drawable/button_round_corner"
             android:backgroundTint="@color/colorBackgroundDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4">
+            app:layout_constraintTop_toBottomOf="@+id/textView16">
 
             <Button
                 android:id="@+id/chgpass_dev"
@@ -231,7 +232,7 @@
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
         <TextView
             android:id="@+id/category"

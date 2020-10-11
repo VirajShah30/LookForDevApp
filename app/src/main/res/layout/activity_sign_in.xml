@@ -54,7 +54,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@android:color/transparent"
-            android:fontFamily="sans-serif-light"
             android:text="login"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
