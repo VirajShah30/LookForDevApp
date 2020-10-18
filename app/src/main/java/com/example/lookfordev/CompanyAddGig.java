@@ -55,15 +55,15 @@ public class CompanyAddGig extends Fragment {
         ui = rootnode.getReference("Gigs/UI Developer");
         backend = rootnode.getReference("Gigs/Backend Developer");
         gigReference = rootnode.getReference("CompanyDetails/"+ user.getUid());
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String t,cat,bud,des;
+                String t,cat,bud,des,mail;
                 t = title.getText().toString();
                 cat = dropdown.getSelectedItem().toString();
                 bud = budget.getText().toString();
                 des = description.getText().toString();
+                mail = user.getEmail();
                 if (TextUtils.isEmpty(t)) {
                     title.setError( "Title is required!" );
                 }
@@ -75,7 +75,7 @@ public class CompanyAddGig extends Fragment {
                 }
                 else{
                     user = mAuth.getCurrentUser();
-                    final GigHelperClass gig = new GigHelperClass(t,bud,des,cat);
+                    final GigHelperClass gig = new GigHelperClass(t,bud,des,cat,mail);
                     switch (cat) {
                         case "Web Developer":
                             web.child(user.getUid()).setValue(gig).addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -5,15 +5,25 @@ public class GigHelperClass {
     String Budget;
     String Description;
     String Category;
+    String Email;
 
     public GigHelperClass() {
     }
 
-    public GigHelperClass(String title, String budget, String description, String category) {
+    public GigHelperClass(String title, String budget, String description, String category, String email) {
         Title = title;
         Budget = budget;
         Description = description;
         Category = category;
+        Email = email;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 
     public String getTitle() {

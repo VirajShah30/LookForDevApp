@@ -1,15 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeveloperSortGig">
+    android:background="@color/colorBackgroundDarkest"
+    tools:context=".DeveloperSortGig" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/sortLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackgroundDarkest"
-        android:text="@string/hello_blank_fragment" />
+        android:isScrollContainer="true"
+        android:orientation="vertical"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:divider="@drawable/divider"
+        android:showDividers="middle">
 
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sort Gig"
+            android:textColor="@color/colorPrimary"
+            android:textSize="56sp"
+            android:layout_marginTop="24dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:id="@+id/spinner3"
+                style="@style/mySpinnerItemStyle"
+                android:layout_width="270dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_round_corner"
+                android:backgroundTint="@color/colorBackgroundDark"
+                android:dropDownWidth="match_parent"
+                android:popupBackground="@color/colorBackgroundDark"
+                android:scrollbarStyle="insideInset"
+                android:soundEffectsEnabled="false"
+                android:spinnerMode="dropdown"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_round_corner"
+                android:text="Search"
+                android:textColor="@color/colorBackgroundDarkest"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/sortlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:divider="@drawable/divider">
+
+        </LinearLayout>
+    </LinearLayout>
 </FrameLayout>

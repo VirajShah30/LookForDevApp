@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeveloperViewGig">
+    tools:context=".DeveloperViewGig"
+    android:background="@color/colorBackgroundDarkest">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorBackgroundDarkest"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+            android:id="@+id/gigLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackgroundDarkest"
+            android:isScrollContainer="true"
+            android:orientation="vertical"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:divider="@drawable/divider"
+            android:showDividers="middle">
 
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Gig"
+                android:textColor="@color/colorPrimary"
+                android:textSize="56sp"
+                android:layout_marginTop="24dp"
+                />
+
+        </LinearLayout>
 </FrameLayout>

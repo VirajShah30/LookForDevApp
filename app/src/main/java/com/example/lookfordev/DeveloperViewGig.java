@@ -2,15 +2,34 @@ package com.example.lookfordev;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class DeveloperViewGig extends Fragment {
-
+    private FirebaseAuth mAuth;
+    TextView a,b;
+    FirebaseDatabase rootnode;
+    DatabaseReference devReference,gigReference;
+    FirebaseUser current;
+    String Role;
+    LinearLayout displaygig;
     public DeveloperViewGig() {
         // Required empty public constructor
     }
@@ -19,6 +38,61 @@ public class DeveloperViewGig extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_developer_view_gig, container, false);
+        View v = inflater.inflate(R.layout.fragment_developer_view_gig, container, false);
+        mAuth = FirebaseAuth.getInstance();
+        rootnode = FirebaseDatabase.getInstance();
+        devReference = rootnode.getReference("DeveloperDetails");
+        current = mAuth.getCurrentUser();
+        displaygig = v.findViewById(R.id.gigLayout);
+        if(current != null) {
+            final String userId = mAuth.getUid();
+            devReference.child(userId).addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            DeveloperHelperClass user = dataSnapshot.getValue(DeveloperHelperClass.class);
+                            Role = user.getCategory();
+                            gigReference = rootnode.getReference("Gigs/"+ Role);
+                            gigReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    int i = 0;
+                                    for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                                        GigHelperClass gig = dsp.getValue(GigHelperClass.class);
+                                        final View gigView = getLayoutInflater().inflate(R.layout.gig_layout,null,false);
+                                        TextView title = gigView.findViewById(R.id.gigtitle);
+                                        TextView budget = gigView.findViewById(R.id.gigbudget);
+                                        TextView description = gigView.findViewById(R.id.gigdescription);
+                                        TextView category = gigView.findViewById(R.id.gigcategory);
+                                        final String Email = gig.getEmail();
+                                        title.setText(gig.getTitle());
+                                        budget.setText(String.format("Rs.%s", gig.getBudget()));
+                                        description.setText(gig.getDescription());
+                                        category.setText(gig.getCategory());
+                                        displaygig.addView(gigView);
+                                        Button apply = gigView.findViewById(R.id.applyButton);
+                                        apply.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Toast.makeText(getActivity(), "Appling for Gig" + Email, Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(getContext(), "Error! Try Again", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
+        return v;
     }
+
+
 }
