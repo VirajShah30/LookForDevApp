@@ -1,5 +1,7 @@
 package com.example.lookfordev;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,9 +28,9 @@ public class DeveloperViewGig extends Fragment {
     private FirebaseAuth mAuth;
     TextView a,b;
     FirebaseDatabase rootnode;
-    DatabaseReference devReference,gigReference;
+    DatabaseReference devReference,gigReference,userReference;
     FirebaseUser current;
-    String Role;
+    String Role, Experience, name , email;
     LinearLayout displaygig;
     public DeveloperViewGig() {
         // Required empty public constructor
@@ -43,6 +45,7 @@ public class DeveloperViewGig extends Fragment {
         rootnode = FirebaseDatabase.getInstance();
         devReference = rootnode.getReference("DeveloperDetails");
         current = mAuth.getCurrentUser();
+        userReference = rootnode.getReference("UserDetails");
         displaygig = v.findViewById(R.id.gigLayout);
         if(current != null) {
             final String userId = mAuth.getUid();
@@ -52,13 +55,14 @@ public class DeveloperViewGig extends Fragment {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             DeveloperHelperClass user = dataSnapshot.getValue(DeveloperHelperClass.class);
                             Role = user.getCategory();
+                            Experience = user.getExperience();
                             gigReference = rootnode.getReference("Gigs/"+ Role);
                             gigReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     int i = 0;
                                     for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                                        GigHelperClass gig = dsp.getValue(GigHelperClass.class);
+                                        final GigHelperClass gig = dsp.getValue(GigHelperClass.class);
                                         final View gigView = getLayoutInflater().inflate(R.layout.gig_layout,null,false);
                                         TextView title = gigView.findViewById(R.id.gigtitle);
                                         TextView budget = gigView.findViewById(R.id.gigbudget);
@@ -74,7 +78,39 @@ public class DeveloperViewGig extends Fragment {
                                         apply.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                Toast.makeText(getActivity(), "Appling for Gig" + Email, Toast.LENGTH_SHORT).show();
+                                                //Toast.makeText(getActivity(), "Appling for Gig" + Email, Toast.LENGTH_SHORT).show();
+
+                                                userReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                                        UserHelperClass user = dataSnapshot.getValue(UserHelperClass.class);
+                                                        if (user != null) {
+                                                            name =user.getName();
+                                                            email =user.getEmail();
+                                                            String[] TO_EMAILS = {Email, email};
+
+                                                            Intent intent = new Intent(Intent.ACTION_SENDTO);
+                                                            intent.setData(Uri.parse("mailto:"));
+                                                            intent.putExtra(Intent.EXTRA_EMAIL, TO_EMAILS);
+                                                            intent.putExtra(Intent.EXTRA_SUBJECT, "Application for "+gig.getTitle());
+                                                            intent.putExtra(Intent.EXTRA_TEXT, "With reference to your gig on LookForDev app, I have decided to apply for the job \n" +
+                                                                    "My personal details are: \n" +
+                                                                    "Name: "+name+"\n" +
+                                                                    "Email: "+email+"\n" +
+                                                                    "Category:"+Role+"\n"+
+                                                                    "Experience "+Experience+" years \n" + "Please do consider my request and further contact me"
+                                                            );
+                                                            startActivity(Intent.createChooser(intent, "Choose your email client"));
+                                                        }
+                                                    }
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError error) {
+                                                        Toast.makeText(getActivity(), "Error! Try Again", Toast.LENGTH_LONG).show();
+                                                    }
+                                                });
+
+
+
                                             }
                                         });
                                     }
