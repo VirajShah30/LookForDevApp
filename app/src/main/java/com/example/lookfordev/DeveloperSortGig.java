@@ -41,7 +41,7 @@ public class DeveloperSortGig extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_developer_sort_gig, container, false);
         final Spinner dropdown = v.findViewById(R.id.spinner3);
-        String[] items = new String[]{"Web Developer", "App Developer", "Hybrid Developer", "UI/UX Developer", "Backend Developer"};
+        String[] items = new String[]{"Web Developer", "App Developer", "Hybrid Developer", "UI Developer", "Backend Developer"};
         ArrayAdapter<String> adapter =  new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
         mAuth = FirebaseAuth.getInstance();

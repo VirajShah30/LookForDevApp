@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +26,7 @@ public class CompanyViewGig extends Fragment {
     TextView title, budget, category, description;
     Button remove;
     FirebaseDatabase rootnode;
-    DatabaseReference gigReference;
+    DatabaseReference gigReference,appReference;
     FirebaseUser current;
     private FirebaseAuth mAuth;
     public CompanyViewGig() {
@@ -41,6 +42,7 @@ public class CompanyViewGig extends Fragment {
         budget = v.findViewById(R.id.title9);
         category = v.findViewById(R.id.title3);
         description = v.findViewById(R.id.title4);
+        remove = v.findViewById(R.id.Remove1);
         mAuth = FirebaseAuth.getInstance();
         rootnode = FirebaseDatabase.getInstance();
         current = mAuth.getCurrentUser();
@@ -56,6 +58,7 @@ public class CompanyViewGig extends Fragment {
                             budget.setText(String.format("Rs.%s", gig.getBudget()));
                             description.setText(gig.getDescription());
                             category.setText(gig.getCategory());
+                            appReference = rootnode.getReference("Gigs/"+gig.getCategory());
                         }
                     }
                     @Override
@@ -63,6 +66,26 @@ public class CompanyViewGig extends Fragment {
                         Toast.makeText(getContext(), "Error! Try Again", Toast.LENGTH_LONG).show();
                     }
                 });
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gigReference.child("Gig").removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        appReference.child(current.getUid()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(getActivity(), "Gig Removed", Toast.LENGTH_SHORT).show();
+                                title.setText(" ");
+                                budget.setText(" ");
+                                description.setText(" ");
+                                category.setText(" ");
+                            }
+                        });
+                    }
+                });
+            }
+        });
         return v;
     }
 }
