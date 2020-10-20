@@ -1,5 +1,7 @@
 package com.example.lookfordev;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,10 +28,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DeveloperSortGig extends Fragment {
     FirebaseDatabase rootnode;
-    DatabaseReference catReference;
+    DatabaseReference catReference, userReference;
     private FirebaseAuth mAuth;
     FirebaseUser user;
     Button search;
+    String name , email;
     LinearLayout sortgig;
     public DeveloperSortGig() {
         // Required empty public constructor
@@ -48,6 +51,7 @@ public class DeveloperSortGig extends Fragment {
         user = mAuth.getCurrentUser();
         rootnode = FirebaseDatabase.getInstance();
         sortgig = v.findViewById(R.id.sortlayout);
+        userReference = rootnode.getReference("UserDetails");
         search = v.findViewById(R.id.search);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +63,8 @@ public class DeveloperSortGig extends Fragment {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                             sortgig.removeAllViews();
-                            GigHelperClass gig = dsp.getValue(GigHelperClass.class);
+                            final String userId = mAuth.getUid();
+                            final GigHelperClass gig = dsp.getValue(GigHelperClass.class);
                             final View gigView = getLayoutInflater().inflate(R.layout.gig_layout,null,false);
                             TextView title = gigView.findViewById(R.id.gigtitle);
                             TextView budget = gigView.findViewById(R.id.gigbudget);
@@ -76,6 +81,34 @@ public class DeveloperSortGig extends Fragment {
                                 @Override
                                 public void onClick(View v) {
                                     Toast.makeText(getActivity(), "Appling for Gig" + Email, Toast.LENGTH_SHORT).show();
+                                    userReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            UserHelperClass user = dataSnapshot.getValue(UserHelperClass.class);
+                                            if (user != null) {
+                                                name =user.getName();
+                                                email =user.getEmail();
+                                                String[] TO_EMAILS = {Email, email};
+
+                                                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                                                intent.setData(Uri.parse("mailto:"));
+                                                intent.putExtra(Intent.EXTRA_EMAIL, TO_EMAILS);
+                                                intent.putExtra(Intent.EXTRA_SUBJECT, "Application for "+gig.getTitle());
+                                                intent.putExtra(Intent.EXTRA_TEXT, "With reference to your gig on LookForDev app, I have decided to apply for the job \n" +
+                                                        "My personal details are: \n" +
+                                                        "Name: "+name+"\n" +
+                                                        "Email: "+email+"\n" +
+                                                        "Category:"+gig.getCategory()+"\n"+
+                                                        "Please do consider my request and further contact me"
+                                                );
+                                                startActivity(Intent.createChooser(intent, "Choose your email client"));
+                                            }
+                                        }
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            Toast.makeText(getActivity(), "Error! Try Again", Toast.LENGTH_LONG).show();
+                                        }
+                                    });
                                 }
                             });
 
